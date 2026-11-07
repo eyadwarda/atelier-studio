@@ -592,6 +592,13 @@ footer {
   transition: opacity .3s;
 }
 .project-card:hover .card-link { opacity: 1; }
+.project-card:focus-visible {
+  outline: 2px solid var(--bronze-light);
+  outline-offset: 4px;
+  z-index: 2;
+}
+.project-card:focus-visible .card-info { transform: translateY(0); }
+.project-card:focus-visible .card-link { opacity: 1; }
 
 /* SERVICES */
 .services { padding-block: clamp(80px, 10vw, 140px); }
@@ -1765,7 +1772,7 @@ function toggleMenu() {
 function renderHome() {
   const featured = PROJECTS.filter(p => p.featured).slice(0, 3);
   document.getElementById('featuredGrid').innerHTML = featured.map(p => `
-    <div class="project-card card" onclick="navigate('detail','${p.id}')">
+    <div class="project-card card" role="link" tabindex="0" aria-label="View project: ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();navigate('detail','${p.id}')}" onclick="navigate('detail','${p.id}')">
       <div class="card-img"><img class="site-photo" src="${p.images[0]}" alt="${p.name}" loading="lazy"></div>
       <div class="card-info">
         <div class="card-cat">${p.cat}</div>
@@ -1798,7 +1805,7 @@ function renderAllProjects() {
 
   const filtered = activeFilter === 'All' ? PROJECTS : PROJECTS.filter(p => p.cat === activeFilter);
   document.getElementById('allProjectsGrid').innerHTML = filtered.map(p => `
-    <div class="project-card" onclick="navigate('detail','${p.id}')">
+    <div class="project-card" role="link" tabindex="0" aria-label="View project: ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();navigate('detail','${p.id}')}" onclick="navigate('detail','${p.id}')">
       <div class="card-img"><img class="site-photo" src="${p.images[0]}" alt="${p.name}" loading="lazy"></div>
       <div class="card-info">
         <div class="card-cat">${p.cat}</div>
