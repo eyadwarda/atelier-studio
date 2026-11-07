@@ -1,0 +1,65 @@
+[
+  {
+    "id": "villa-mara",
+    "name": "Villa Mara",
+    "cat": "Residential",
+    "location": "Cala Llamp, Mallorca, Spain",
+    "scale": "910 m² estate",
+    "credit": "Interior architecture, design & styling: Terraza Balear · Architecture: Revuelta y Stahn Arquitectos",
+    "photographer": "Terraza Balear",
+    "source": "https://terrazabalear.com/projects/villa-mara/",
+    "images": [
+      "https://terrazabalear.com/wp-content/uploads/2023/02/Villa_Mara-Terraza_Balear-Interior_Design_Projects-Outdoor_1-1400x817.jpg",
+      "https://terrazabalear.com/wp-content/uploads/2023/02/Villa_Mara-Terraza_Balear-Interior_Design_Projects-Outdoor_2.jpg"
+    ],
+    "featured": true,
+    "overview": "A 910 m² Mediterranean estate on the cliffs of Cala Llamp, Mallorca, surrounded by the sea and pine landscape.",
+    "concept": "The interior and exterior are treated as a continuous living environment, with a restrained, almost monochrome palette and carefully layered textures that frame the surrounding views.",
+    "challenges": "The design creates a calm relationship between the indoor living areas and the 350 m² of outdoor terraces and pool spaces, keeping the Mediterranean landscape central to the experience.",
+    "materials": "The published project emphasizes layered natural textures, neutral tones, outdoor living furniture, and a cohesive relationship between interior and exterior spaces.",
+    "color": "#D4C4A8"
+  },
+  {
+    "id": "house-japanese-kura",
+    "name": "House with Japanese Kura",
+    "cat": "Residential",
+    "location": "Japan",
+    "scale": "462.95 m²",
+    "credit": "Architecture & interior design: RON DESIGN / Articious Co., Ltd.",
+    "photographer": "Koji Fujii / TOREAL Inc.",
+    "source": "https://ron-design.jp/projects_kura-en",
+    "images": [
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_01.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_02.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_03.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_04.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_05.jpg"
+    ],
+    "featured": true,
+    "overview": "A family residence that brings together a traditional Japanese storehouse, a new home, and an established garden setting.",
+    "concept": "The project combines reinforced concrete and timber construction with traditional Japanese craft and contemporary living. Kyoto washi sliding doors and a sculpted plaster wall translate natural motifs into the interior.",
+    "challenges": "The design brings together distinct generations of the family home and the inherited Kura while creating a contemporary residence with spaces for both family life and entertaining.",
+    "materials": "Kyoto washi paper, timber, sculpted plaster, traditional craft details, shoji screens, and locally sourced materials.",
+    "color": "#C4B8A4"
+  },
+  {
+    "id": "buro-happold",
+    "name": "Buro Happold London Workplace",
+    "cat": "Commercial",
+    "location": "Shoreditch, London, UK",
+    "scale": "35,000 sq ft · 4 floors",
+    "credit": "Interior architecture & design: Gensler",
+    "photographer": "Gensler",
+    "source": "https://www.gensler.com/projects/buro-happold",
+    "images": [
+      "https://static2.gensler.com/uploads/hero_element/24542/thumb_desktop/thumbs/project-buro-happold-01-2000x1125_1726525608_1024x576.jpg",
+      "https://static1.gensler.com/uploads/hero_element/24543/thumb_desktop/thumbs/project-buro-happold-02-2000x_1726525635_1024x576.jpg"
+    ],
+    "featured": true,
+    "overview": "A 35,000-square-foot headquarters for Buro Happold in Shoreditch, organized across four floors of the Featherstone Building.",
+    "concept": "The workplace balances open-plan work areas with collaboration and social spaces, using a strong material identity and a prominent mass-timber staircase to connect the floors.",
+    "challenges": "The design supports hybrid working and a range of work styles while prioritizing employee wellbeing, inclusivity, and the integrity of the existing structure.",
+    "materials": "Mass timber, exposed concrete, steel, planting, and a considered palette of workplace materials.",
+    "color": "#8A9BAA"
+  }
+]

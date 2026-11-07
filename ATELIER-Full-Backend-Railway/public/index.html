@@ -1,0 +1,1911 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<title>ATELIER — Interior Architecture Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="ATELIER is a premium interior architecture and design studio crafting timeless residential, commercial, and hospitality spaces.">
+<meta property="og:title" content="ATELIER — Interior Architecture Studio">
+<meta property="og:description" content="Spaces Designed Around Life. Premium interior architecture and design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap">
+
+<style>
+/* ── DESIGN SYSTEM ──────────────────────────────────────────────
+   Layout: full-bleed sections, editorial grid with generous whitespace
+   Color: warm ivory base, charcoal type, muted bronze accent
+   Type: Cormorant Garamond (display) + Manrope (body/UI)
+─────────────────────────────────────────────────────────────── */
+:root {
+  --ivory:   #F5F2EC;
+  --beige:   #E8E1D7;
+  --charcoal:#252522;
+  --warm-grey:#8A8780;
+  --white:   #FFFFFF;
+  --bronze:  #A58B6B;
+  --bronze-light: #C4A882;
+
+  --bg:      var(--ivory);
+  --bg2:     var(--beige);
+  --fg:      var(--charcoal);
+  --fg2:     var(--warm-grey);
+  --accent:  var(--bronze);
+  --surface: var(--white);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Manrope', system-ui, sans-serif;
+
+  --max-w:   1240px;
+  --nav-h:   72px;
+  --gap:     clamp(24px, 4vw, 64px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:     #1A1917;
+    --bg2:    #22201D;
+    --fg:     #EDE9E2;
+    --fg2:    #9A9690;
+    --surface:#252320;
+    --bronze: #C4A882;
+    --accent: #C4A882;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:     #1A1917;
+  --bg2:    #22201D;
+  --fg:     #EDE9E2;
+  --fg2:    #9A9690;
+  --surface:#252320;
+  --bronze: #C4A882;
+  --accent: #C4A882;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+.site-photo { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-bg .site-photo { position:absolute; inset:0; }
+.project-card .card-img img { transition: transform .6s cubic-bezier(.25,.46,.45,.94); }
+.project-card:hover .card-img img { transform:scale(1.04); }
+.detail-hero > .site-photo { position:absolute; inset:0; }
+.project-credit { font-size:11px; color:var(--fg2); margin-top:10px; line-height:1.6; }
+.project-credit a { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* PAGE SYSTEM */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* WRAPPER */
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: env(safe-area-inset-top, 0px);
+  left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--bg);
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 101;
+  background: var(--bg);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg2);
+  transition: color .2s;
+}
+.nav-links a:hover, .nav-links a.active-link { color: var(--fg); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  background: transparent;
+  transition: background .2s, color .2s;
+  cursor: pointer;
+}
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn-filled { background: var(--fg); color: var(--bg); }
+.btn-filled:hover { background: transparent; color: var(--fg); }
+.btn-bronze {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
+.btn-bronze:hover { background: transparent; color: var(--accent); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--fg);
+  transition: transform .3s, opacity .2s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  left: 0; right: 0; bottom: 0;
+  background: var(--bg);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--fg);
+  letter-spacing: 0.05em;
+  transition: color .2s;
+}
+.mobile-menu a:hover { color: var(--accent); }
+.mobile-menu .btn { margin-top: 16px; }
+
+/* ── SECTION ANATOMY ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+  color: var(--fg);
+}
+
+.section-body {
+  font-size: 15px;
+  color: var(--fg2);
+  line-height: 1.8;
+  max-width: 540px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--charcoal);
+  color: var(--white);
+  padding-block: 64px 0;
+}
+:root[data-theme="dark"] footer,
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) footer { background: #111110; }
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.8;
+  max-width: 260px;
+}
+
+.footer-heading {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,.65);
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--bronze-light); }
+
+.footer-contact-line {
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+  margin-top: 4px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.footer-social a {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255,255,255,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: rgba(255,255,255,.5);
+  letter-spacing: 0;
+  transition: border-color .2s, color .2s;
+}
+.footer-social a:hover { border-color: var(--bronze-light); color: var(--bronze-light); }
+
+.footer-bottom {
+  margin-top: 48px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 20px max(16px, env(safe-area-inset-left, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-contact-bar {
+  background: rgba(255,255,255,.04);
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 14px max(16px, env(safe-area-inset-left, 0px));
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.35);
+  letter-spacing: 0.04em;
+}
+.footer-contact-bar a { color: rgba(255,255,255,.5); transition: color .2s; }
+.footer-contact-bar a:hover { color: var(--bronze-light); }
+
+/* ── PAGE PADDING ── */
+.page-content { padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px)); }
+
+/* ══════════════════════════════════════════════
+   HOME PAGE
+══════════════════════════════════════════════ */
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 95vh;
+  min-height: 580px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--charcoal);
+}
+
+/* SVG architectural interior illustration */
+.hero-bg svg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20,19,17,.85) 0%, rgba(20,19,17,.25) 60%, transparent 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-bottom: 80px;
+  max-width: 820px;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp .8s .2s forwards;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7.5vw, 96px);
+  font-weight: 300;
+  line-height: 1.0;
+  color: #fff;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp .9s .4s forwards;
+}
+.hero-title em { font-style: italic; color: var(--bronze-light); }
+
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp .9s .6s forwards;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp .9s .8s forwards;
+}
+.hero-ctas .btn { border-color: rgba(255,255,255,.5); color: #fff; }
+.hero-ctas .btn:hover { background: #fff; color: var(--charcoal); border-color: #fff; }
+.hero-ctas .btn-filled { background: var(--accent); border-color: var(--accent); color: #fff; }
+.hero-ctas .btn-filled:hover { background: transparent; color: var(--accent); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* INTRO */
+.intro {
+  padding-block: clamp(80px, 10vw, 140px);
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.intro-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--bg2);
+}
+.intro-visual svg, .intro-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+.intro-num {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 300;
+  color: rgba(255,255,255,.06);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.intro-text { display: flex; flex-direction: column; gap: 24px; }
+.intro-text .section-title { font-size: clamp(32px, 4vw, 52px); }
+
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  margin: 8px 0;
+}
+
+/* FEATURED PROJECTS */
+.featured {
+  padding-block: clamp(60px, 8vw, 120px);
+  background: var(--bg2);
+}
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.projects-grid .card:first-child {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg2);
+}
+.project-card .card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.project-card:first-child .card-img { aspect-ratio: unset; height: 100%; min-height: 460px; }
+.project-card .card-img svg, .project-card .card-img img {
+  width: 100%; height: 100%;
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94);
+}
+.project-card:hover .card-img svg, .project-card:hover .card-img img { transform: scale(1.04); }
+
+.card-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 28px 28px;
+  background: linear-gradient(to top, rgba(20,19,17,.9) 0%, transparent 100%);
+  color: #fff;
+  transform: translateY(8px);
+  transition: transform .3s;
+}
+.project-card:hover .card-info { transform: translateY(0); }
+
+.card-cat {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+  margin-bottom: 6px;
+}
+.card-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.card-meta {
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+  display: flex;
+  gap: 16px;
+}
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.project-card:hover .card-link { opacity: 1; }
+
+/* SERVICES */
+.services { padding-block: clamp(80px, 10vw, 140px); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+  margin-top: 56px;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.service-item {
+  background: var(--bg);
+  padding: 40px 36px;
+  transition: background .25s;
+}
+.service-item:hover { background: var(--bg2); }
+
+.service-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  color: color-mix(in srgb, var(--fg) 10%, transparent);
+  line-height: 1;
+  margin-bottom: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.service-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+.service-desc {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.75;
+}
+
+/* PHILOSOPHY */
+.philosophy {
+  padding-block: clamp(80px, 10vw, 140px);
+  background: var(--charcoal);
+  color: #fff;
+}
+.philosophy .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.philosophy .section-title { color: #fff; }
+.philosophy .section-body { color: rgba(255,255,255,.55); max-width: 460px; }
+.philosophy .divider { background: var(--bronze-light); }
+.philosophy-visual { position: relative; }
+.philosophy-quote {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.85);
+  line-height: 1.4;
+  border-left: 2px solid var(--bronze-light);
+  padding-left: 28px;
+}
+.philosophy-attr {
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+  padding-left: 28px;
+}
+
+/* STATS */
+.stats { padding-block: clamp(60px, 8vw, 100px); background: var(--bg2); }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: color-mix(in srgb, var(--fg) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
+  margin-top: 48px;
+}
+.stat-item {
+  background: var(--bg2);
+  padding: 48px 40px;
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  color: var(--fg);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg2);
+  margin-top: 12px;
+}
+.stat-note {
+  font-size: 10px;
+  color: var(--fg2);
+  opacity: .6;
+  margin-top: 4px;
+}
+
+/* TESTIMONIALS */
+.testimonials { padding-block: clamp(80px, 10vw, 140px); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.testi-card {
+  background: var(--bg2);
+  padding: 36px;
+  border-top: 2px solid var(--accent);
+}
+.testi-quote {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--fg);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+.testi-author { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg); }
+.testi-role { font-size: 12px; color: var(--fg2); margin-top: 2px; }
+.testi-note {
+  font-size: 10px;
+  color: var(--fg2);
+  opacity: .55;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* CTA BAND */
+.cta-band {
+  padding-block: clamp(80px, 10vw, 120px);
+  background: var(--charcoal);
+  text-align: center;
+  color: #fff;
+}
+.cta-band .section-title { color: #fff; font-size: clamp(32px, 5vw, 64px); margin-bottom: 20px; }
+.cta-band p { color: rgba(255,255,255,.5); margin-bottom: 36px; }
+
+/* ══════════════════════════════════════════════
+   PROJECTS PAGE
+══════════════════════════════════════════════ */
+.page-hero {
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 60px);
+  padding-bottom: 60px;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  margin-bottom: 48px;
+}
+.page-hero .wrap { max-width: var(--max-w); margin: 0 auto; }
+
+.filter-bar {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.filter-btn {
+  padding: 8px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  color: var(--fg2);
+  background: transparent;
+  transition: all .2s;
+  cursor: pointer;
+}
+.filter-btn:hover { border-color: var(--fg); color: var(--fg); }
+.filter-btn.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+.all-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.all-projects-grid .project-card .card-img { aspect-ratio: 4/3; height: auto; min-height: unset; }
+
+/* ══════════════════════════════════════════════
+   PROJECT DETAIL PAGE
+══════════════════════════════════════════════ */
+.detail-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--charcoal);
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+}
+.detail-hero svg, .detail-hero img { width: 100%; height: 100%; object-fit: cover; }
+.detail-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20,19,17,.8) 0%, transparent 60%);
+}
+.detail-title-block {
+  position: absolute;
+  bottom: 48px;
+  left: max(16px, env(safe-area-inset-left, 0px));
+  right: max(16px, env(safe-area-inset-right, 0px));
+  color: #fff;
+}
+.detail-title-block .cat { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--bronze-light); margin-bottom: 10px; }
+.detail-title-block h1 { font-family: var(--font-display); font-size: clamp(36px, 6vw, 72px); font-weight: 300; }
+
+.detail-meta-bar {
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  padding-block: 32px;
+}
+.detail-meta {
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+.detail-meta-item label { font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--fg2); display: block; margin-bottom: 6px; }
+.detail-meta-item span { font-family: var(--font-display); font-size: 20px; font-weight: 400; color: var(--fg); }
+
+.detail-body { padding-block: 80px; }
+.detail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; }
+.detail-section h2 { font-family: var(--font-display); font-size: 32px; font-weight: 400; color: var(--fg); margin-bottom: 16px; }
+.detail-section p { font-size: 14px; color: var(--fg2); line-height: 1.85; }
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 80px;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+.detail-gallery-img { aspect-ratio: 4/3; overflow: hidden; background: var(--bg2); }
+.detail-gallery-img svg, .detail-gallery-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.detail-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  padding-top: 40px;
+}
+.detail-nav-btn {
+  flex: 1;
+  padding: 28px 24px;
+  background: var(--bg2);
+  cursor: pointer;
+  border: none;
+  transition: background .2s;
+  text-align: left;
+}
+.detail-nav-btn.next { text-align: right; }
+.detail-nav-btn:hover { background: color-mix(in srgb, var(--fg) 8%, var(--bg2)); }
+.detail-nav-label { font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--fg2); margin-bottom: 6px; }
+.detail-nav-name { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--fg); }
+
+/* ══════════════════════════════════════════════
+   SERVICES PAGE
+══════════════════════════════════════════════ */
+.services-page .service-block {
+  padding-block: clamp(60px, 8vw, 100px);
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.services-page .service-block:nth-child(even) { background: var(--bg2); }
+.service-block-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.service-block-inner.rev { direction: rtl; }
+.service-block-inner.rev > * { direction: ltr; }
+.service-visual { aspect-ratio: 5/4; overflow: hidden; background: var(--charcoal); }
+.service-visual svg, .service-visual img { width: 100%; height: 100%; object-fit: cover; }
+.service-content { display: flex; flex-direction: column; gap: 20px; }
+.service-content h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); font-weight: 400; color: var(--fg); }
+.service-content p { font-size: 14px; color: var(--fg2); line-height: 1.85; }
+.service-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.service-features li { font-size: 13px; color: var(--fg2); padding-left: 20px; position: relative; }
+.service-features li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 1px; }
+
+/* ══════════════════════════════════════════════
+   ABOUT PAGE
+══════════════════════════════════════════════ */
+.about-intro {
+  padding-block: clamp(60px, 8vw, 120px);
+}
+.about-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-visual { aspect-ratio: 3/4; overflow: hidden; background: var(--charcoal); }
+.about-visual svg, .about-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+.values-section { padding-block: clamp(60px, 8vw, 100px); background: var(--bg2); }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: color-mix(in srgb, var(--fg) 10%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent); margin-top: 48px; }
+.value-item { background: var(--bg2); padding: 36px 32px; }
+.value-item h3 { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 12px; }
+.value-item p { font-size: 13px; color: var(--fg2); line-height: 1.75; }
+
+.team-section { padding-block: clamp(60px, 8vw, 120px); }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 48px; }
+.team-card { overflow: hidden; }
+.team-photo { aspect-ratio: 3/4; overflow: hidden; background: var(--bg2); }
+.team-photo svg { width: 100%; height: 100%; }
+.team-info { padding: 20px 0 0; }
+.team-name { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--fg); }
+.team-role { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+
+.process-section { padding-block: clamp(60px, 8vw, 100px); background: var(--charcoal); color: #fff; }
+.process-section .section-title { color: #fff; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 56px; }
+.process-step { padding: 32px 28px; border-top: 2px solid rgba(255,255,255,.12); }
+.process-step:first-child { border-color: var(--bronze-light); }
+.process-step-num { font-family: var(--font-display); font-size: 48px; font-weight: 300; color: rgba(255,255,255,.12); line-height: 1; margin-bottom: 20px; font-variant-numeric: tabular-nums; }
+.process-step h3 { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: #fff; margin-bottom: 12px; }
+.process-step p { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.75; }
+
+/* ══════════════════════════════════════════════
+   CONTACT PAGE
+══════════════════════════════════════════════ */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+  padding-block: 80px;
+}
+.contact-info h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); font-weight: 400; margin-bottom: 16px; }
+.contact-info p { font-size: 14px; color: var(--fg2); line-height: 1.85; margin-bottom: 36px; }
+.contact-detail { margin-bottom: 24px; }
+.contact-detail label { font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+.contact-detail span { font-size: 14px; color: var(--fg); }
+
+.contact-form { background: var(--bg2); padding: 48px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--fg2); display: block; margin-bottom: 8px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s;
+  appearance: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--accent);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group.error input, .form-group.error select, .form-group.error textarea { border-color: #c0392b; }
+.form-error { font-size: 11px; color: #c0392b; margin-top: 6px; display: none; }
+.form-group.error .form-error { display: block; }
+
+.form-submit { margin-top: 8px; }
+.form-success {
+  display: none;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  border: 1px solid var(--accent);
+  padding: 24px;
+  margin-top: 20px;
+  text-align: center;
+}
+.form-success.show { display: block; }
+.form-success h3 { font-family: var(--font-display); font-size: 24px; margin-bottom: 8px; }
+.form-success p { font-size: 13px; color: var(--fg2); }
+
+/* ── 404 ── */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+  padding: 40px 20px;
+}
+.not-found h1 { font-family: var(--font-display); font-size: clamp(80px, 15vw, 160px); font-weight: 300; color: color-mix(in srgb, var(--fg) 15%, transparent); line-height: 1; }
+.not-found h2 { font-family: var(--font-display); font-size: 32px; font-weight: 400; margin-top: 8px; }
+.not-found p { color: var(--fg2); margin-block: 16px 32px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .projects-grid .card:first-child { grid-row: auto; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .detail-cols { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .hero-title { font-size: clamp(38px, 10vw, 68px); }
+  .intro-grid { grid-template-columns: 1fr; }
+  .philosophy .wrap { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .all-projects-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .detail-gallery { grid-template-columns: 1fr; }
+  .service-block-inner { grid-template-columns: 1fr; gap: 32px; }
+  .service-block-inner.rev { direction: ltr; }
+  .about-intro-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .contact-form { padding: 28px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .detail-meta { gap: 28px; }
+  .detail-nav { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="navigate('home');return false;">Atelier</a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="navigate('home');return false;" data-page="home">Home</a></li>
+      <li><a href="#" onclick="navigate('projects');return false;" data-page="projects">Projects</a></li>
+      <li><a href="#" onclick="navigate('services');return false;" data-page="services">Services</a></li>
+      <li><a href="#" onclick="navigate('about');return false;" data-page="about">About</a></li>
+      <li><a href="#" onclick="navigate('contact');return false;" data-page="contact">Contact</a></li>
+    </ul>
+    <button class="btn btn-filled nav-cta" onclick="navigate('contact')">Start a Project</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="navigate('home');toggleMenu();return false;">Home</a>
+  <a href="#" onclick="navigate('projects');toggleMenu();return false;">Projects</a>
+  <a href="#" onclick="navigate('services');toggleMenu();return false;">Services</a>
+  <a href="#" onclick="navigate('about');toggleMenu();return false;">About</a>
+  <a href="#" onclick="navigate('contact');toggleMenu();return false;">Contact</a>
+  <button class="btn btn-bronze" onclick="navigate('contact');toggleMenu()">Start a Project</button>
+</div>
+
+<!-- ══════ HOME PAGE ══════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+<img class="site-photo" src="https://static2.gensler.com/uploads/hero_element/24542/thumb_desktop/thumbs/project-buro-happold-01-2000x1125_1726525608_1024x576.jpg" alt="Buro Happold London workplace by Gensler" fetchpriority="high">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Interior Architecture &amp; Design</div>
+      <h1 class="hero-title">Designing Spaces.<br><em>Creating Experiences.</em></h1>
+      <p class="hero-sub">We craft timeless interiors that balance architecture, functionality, and emotion — spaces that feel as good as they look.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-filled" onclick="navigate('projects')">Explore Our Work</button>
+        <button class="btn" onclick="navigate('contact')">Start a Project</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="wrap">
+      <div class="intro-grid">
+        <div class="intro-visual">
+<img class="site-photo" src="https://terrazabalear.com/wp-content/uploads/2023/02/Villa_Mara-Terraza_Balear-Interior_Design_Projects-Outdoor_1-1400x817.jpg" alt="Villa Mara, Mallorca — project photograph by Terraza Balear" loading="lazy">
+          <div class="intro-num">01</div>
+        </div>
+        <div class="intro-text">
+          <div class="section-label">About the Studio</div>
+          <h2 class="section-title">Thoughtful Design. Timeless Spaces.</h2>
+          <div class="divider"></div>
+          <p class="section-body">ATELIER is a creative architecture and interior design studio focused on creating meaningful environments. We believe great design is never accidental — it emerges from deep listening, careful material selection, and an unwavering attention to how people move through and inhabit a space.</p>
+          <p class="section-body" style="margin-top:16px;">From intimate residences to expansive commercial interiors, every project is approached as a unique dialogue between architecture, light, and life.</p>
+          <button class="btn" style="margin-top:8px;" onclick="navigate('about')">Our Story</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="featured">
+    <div class="wrap">
+      <div class="featured-header">
+        <div>
+          <div class="section-label">Selected References</div>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <button class="btn" onclick="navigate('projects')">View All Projects</button>
+      </div>
+      <div class="projects-grid" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="wrap">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid" id="homeServicesGrid"></div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="wrap">
+      <div>
+        <div class="section-label" style="color:var(--bronze-light)">Design Philosophy</div>
+        <h2 class="section-title">Beyond Aesthetics.</h2>
+        <div class="divider"></div>
+        <p class="section-body" style="margin-top:8px;">ATELIER combines functionality, materials, lighting, and spatial planning to create distinctive environments. We study how natural and artificial light moves through a space across seasons and hours. We select materials for their tactility as much as their appearance. Every spatial decision answers to how people will actually live and work within it — form follows feeling.</p>
+        <button class="btn" style="border-color:rgba(255,255,255,.3);color:#fff;margin-top:28px;" onclick="navigate('services')">Explore Services</button>
+      </div>
+      <div class="philosophy-visual">
+        <img class="site-photo" src="https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_03.jpg" alt="House with Japanese Kura by RON DESIGN" loading="lazy">
+        <div class="philosophy-quote">"Space is not a backdrop for life. It is the architecture of experience itself."</div>
+        <div class="philosophy-attr">— ATELIER Design Manifesto</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2 class="section-title">Let's Create Something Meaningful.</h2>
+      <p>Tell us about your vision. We'll help bring it to life.</p>
+      <button class="btn btn-bronze" onclick="navigate('contact')">Discuss Your Project</button>
+    </div>
+  </section>
+
+  <div id="home-footer"></div>
+</div>
+
+<!-- ══════ PROJECTS PAGE ══════ -->
+<div class="page page-content" id="page-projects">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="section-label">Portfolio</div>
+      <h1 class="section-title">Project References</h1>
+      <p class="section-body" style="margin-top:16px;">A curated selection of built projects by independent architecture and design practices. Every project is credited to its original designers and photographers.</p>
+    </div>
+  </section>
+  <div class="wrap" style="padding-bottom:80px;">
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="all-projects-grid" id="allProjectsGrid"></div>
+  </div>
+  <div id="projects-footer"></div>
+</div>
+
+<!-- ══════ PROJECT DETAIL PAGE ══════ -->
+<div class="page" id="page-detail">
+  <div id="detailContent"></div>
+  <div id="detail-footer"></div>
+</div>
+
+<!-- ══════ SERVICES PAGE ══════ -->
+<div class="page page-content" id="page-services">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="section-label">Capabilities</div>
+      <h1 class="section-title">What We Offer</h1>
+      <p class="section-body" style="margin-top:16px;">From spatial strategy to material specification, we offer a full suite of architecture and interior design services.</p>
+    </div>
+  </section>
+  <div class="services-page" id="servicesPage"></div>
+  <section class="cta-band">
+    <div class="wrap">
+      <h2 class="section-title">Ready to Begin?</h2>
+      <p>Every project starts with a conversation.</p>
+      <button class="btn btn-bronze" onclick="navigate('contact')">Start a Project</button>
+    </div>
+  </section>
+  <div id="services-footer"></div>
+</div>
+
+<!-- ══════ ABOUT PAGE ══════ -->
+<div class="page page-content" id="page-about">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="section-label">The Studio</div>
+      <h1 class="section-title">About ATELIER</h1>
+    </div>
+  </section>
+
+  <section class="about-intro">
+    <div class="wrap">
+      <div class="about-intro-grid">
+        <div class="about-visual">
+<img class="site-photo" src="https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_01.jpg" alt="House with Japanese Kura by RON DESIGN" loading="lazy">
+        </div>
+        <div class="intro-text">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Architecture as a Human Act</h2>
+          <div class="divider"></div>
+          <p class="section-body">ATELIER is built around a simple conviction: the spaces we inhabit shape how we live, work, and connect. Good design brings clarity, comfort, and purpose to everyday life.</p>
+          <p class="section-body" style="margin-top:16px;">Our approach brings architecture, interiors, materials, and light into one considered vision. We value thoughtful planning, lasting materials, and spaces that respond to the people who use them.</p>
+          <p class="section-body" style="margin-top:16px;">We work with clients who care about craft — people who understand that a well-designed environment is not a backdrop for living, but an active participant in it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="wrap">
+      <div class="section-label">What Guides Us</div>
+      <h2 class="section-title">Studio Values</h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <h3>Intention</h3>
+          <p>Every line, material, and spatial decision is deliberate. We resist decoration for its own sake and embrace the discipline of purpose.</p>
+        </div>
+        <div class="value-item">
+          <h3>Craft</h3>
+          <p>We believe in the intelligence of well-made things. From structural decisions to door handle selection, quality is non-negotiable.</p>
+        </div>
+        <div class="value-item">
+          <h3>Listening</h3>
+          <p>Great spaces emerge from understanding. We spend as much time learning about our clients as we do designing for them.</p>
+        </div>
+        <div class="value-item">
+          <h3>Timelessness</h3>
+          <p>Trends are fleeting. We design for the decades, selecting materials and proportions that only grow more beautiful with time.</p>
+        </div>
+        <div class="value-item">
+          <h3>Sustainability</h3>
+          <p>We prioritize materials with long lifespans, natural origins, and responsible sourcing — beauty that doesn't cost the future.</p>
+        </div>
+        <div class="value-item">
+          <h3>Transparency</h3>
+          <p>We believe in open dialogue, clear timelines, and honest conversations about what a project needs to truly succeed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="wrap">
+      <div class="section-label" style="color:var(--bronze-light)">How We Work</div>
+      <h2 class="section-title">The Creative Process</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-num">01</div>
+          <h3>Discovery</h3>
+          <p>We begin with extended conversations — about how you live, what you love, how the space will grow with you. This is where the real design work starts.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">02</div>
+          <h3>Concept</h3>
+          <p>Spatial strategy, material palette, and lighting concept are developed together. We present a cohesive direction before moving into detail.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">03</div>
+          <h3>Development</h3>
+          <p>Technical drawings, 3D visualizations, and material specifications are refined through close collaboration with engineers and contractors.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">04</div>
+          <h3>Delivery</h3>
+          <p>We oversee every phase of construction and installation, ensuring the vision is realized with the precision the project deserves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2 class="section-title">Work With Us</h2>
+      <p>We take on a limited number of projects each year to ensure each one receives the attention it deserves.</p>
+      <button class="btn btn-bronze" onclick="navigate('contact')">Begin the Conversation</button>
+    </div>
+  </section>
+  <div id="about-footer"></div>
+</div>
+
+<!-- ══════ CONTACT PAGE ══════ -->
+<div class="page page-content" id="page-contact">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="section-label">Get in Touch</div>
+      <h1 class="section-title">Let's Talk About Your Project</h1>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2>We'd Love to Hear From You</h2>
+        <p>Whether you have a fully formed vision or just a feeling about what you want your space to become, we're here to listen. Reach out through the form or contact us directly.</p>
+        <div class="contact-detail">
+          <label>Studio Email</label>
+          <span id="studioEmail"><a href="mailto:hello@atelier-studio.com">hello@atelier-studio.com</a></span>
+        </div>
+        <div class="contact-detail">
+          <label>Studio Phone</label>
+          <span id="studioPhone">+1 (212) 555-0192</span>
+        </div>
+        <div class="contact-detail">
+          <label>Studio Location</label>
+          <span id="studioLocation">142 West 36th Street, Suite 8<br>New York, NY 10018</span>
+        </div>
+        <div class="contact-detail">
+          <label>Office Hours</label>
+          <span id="officeHours">Monday – Friday, 9am – 6pm EST</span>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group" id="fg-name">
+              <label for="f-name">Full Name *</label>
+              <input type="text" id="f-name" name="name" placeholder="Your full name" autocomplete="name">
+              <div class="form-error">Please enter your name.</div>
+            </div>
+            <div class="form-group" id="fg-email">
+              <label for="f-email">Email Address *</label>
+              <input type="email" id="f-email" name="email" placeholder="your@email.com" autocomplete="email">
+              <div class="form-error">Please enter a valid email address.</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-phone">Phone Number</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="+20 109 809 6407" autocomplete="tel">
+            </div>
+            <div class="form-group" id="fg-type">
+              <label for="f-type">Project Type *</label>
+              <select id="f-type" name="type">
+                <option value="">Select a project type</option>
+                <option>Residential Interior</option>
+                <option>Commercial Interior</option>
+                <option>Hospitality Design</option>
+                <option>Architectural Design</option>
+                <option>3D Visualization</option>
+                <option>Design Consultation</option>
+                <option>Other</option>
+              </select>
+              <div class="form-error">Please select a project type.</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-budget">Estimated Budget</label>
+              <select id="f-budget" name="budget">
+                <option value="">Select a range</option>
+                <option>Under $50,000</option>
+                <option>$50,000 – $150,000</option>
+                <option>$150,000 – $500,000</option>
+                <option>$500,000 – $1,000,000</option>
+                <option>$1,000,000+</option>
+                <option>To be discussed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-location">Project Location</label>
+              <input type="text" id="f-location" name="location" placeholder="City, Country">
+            </div>
+          </div>
+          <div class="form-group" id="fg-message">
+            <label for="f-message">Your Message *</label>
+            <textarea id="f-message" name="message" placeholder="Tell us about your project, your vision, and any questions you have..."></textarea>
+            <div class="form-error">Please include a message.</div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-filled btn-bronze" id="submitBtn">Send Message</button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <h3>Message Received</h3>
+            <p>Your email app will open with your message prepared. Review the details and press Send to contact the studio.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="contact-footer"></div>
+</div>
+
+<!-- ══════ 404 PAGE ══════ -->
+<div class="page page-content" id="page-404">
+  <div class="not-found">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>The page you're looking for doesn't exist or has been moved.</p>
+    <button class="btn btn-filled" onclick="navigate('home')">Return Home</button>
+  </div>
+  <div id="four04-footer"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
+let PROJECTS = [
+  {
+    "id": "villa-mara",
+    "name": "Villa Mara",
+    "cat": "Residential",
+    "location": "Cala Llamp, Mallorca, Spain",
+    "scale": "910 m² estate",
+    "credit": "Interior architecture, design & styling: Terraza Balear · Architecture: Revuelta y Stahn Arquitectos",
+    "photographer": "Terraza Balear",
+    "source": "https://terrazabalear.com/projects/villa-mara/",
+    "images": [
+      "https://terrazabalear.com/wp-content/uploads/2023/02/Villa_Mara-Terraza_Balear-Interior_Design_Projects-Outdoor_1-1400x817.jpg",
+      "https://terrazabalear.com/wp-content/uploads/2023/02/Villa_Mara-Terraza_Balear-Interior_Design_Projects-Outdoor_2.jpg"
+    ],
+    "featured": true,
+    "overview": "A 910 m² Mediterranean estate on the cliffs of Cala Llamp, Mallorca, surrounded by the sea and pine landscape.",
+    "concept": "The interior and exterior are treated as a continuous living environment, with a restrained, almost monochrome palette and carefully layered textures that frame the surrounding views.",
+    "challenges": "The design creates a calm relationship between the indoor living areas and the 350 m² of outdoor terraces and pool spaces, keeping the Mediterranean landscape central to the experience.",
+    "materials": "The published project emphasizes layered natural textures, neutral tones, outdoor living furniture, and a cohesive relationship between interior and exterior spaces.",
+    "color": "#D4C4A8"
+  },
+  {
+    "id": "house-japanese-kura",
+    "name": "House with Japanese Kura",
+    "cat": "Residential",
+    "location": "Japan",
+    "scale": "462.95 m²",
+    "credit": "Architecture & interior design: RON DESIGN / Articious Co., Ltd.",
+    "photographer": "Koji Fujii / TOREAL Inc.",
+    "source": "https://ron-design.jp/projects_kura-en",
+    "images": [
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_01.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_02.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_03.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_04.jpg",
+      "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_05.jpg"
+    ],
+    "featured": true,
+    "overview": "A family residence that brings together a traditional Japanese storehouse, a new home, and an established garden setting.",
+    "concept": "The project combines reinforced concrete and timber construction with traditional Japanese craft and contemporary living. Kyoto washi sliding doors and a sculpted plaster wall translate natural motifs into the interior.",
+    "challenges": "The design brings together distinct generations of the family home and the inherited Kura while creating a contemporary residence with spaces for both family life and entertaining.",
+    "materials": "Kyoto washi paper, timber, sculpted plaster, traditional craft details, shoji screens, and locally sourced materials.",
+    "color": "#C4B8A4"
+  },
+  {
+    "id": "buro-happold",
+    "name": "Buro Happold London Workplace",
+    "cat": "Commercial",
+    "location": "Shoreditch, London, UK",
+    "scale": "35,000 sq ft · 4 floors",
+    "credit": "Interior architecture & design: Gensler",
+    "photographer": "Gensler",
+    "source": "https://www.gensler.com/projects/buro-happold",
+    "images": [
+      "https://static2.gensler.com/uploads/hero_element/24542/thumb_desktop/thumbs/project-buro-happold-01-2000x1125_1726525608_1024x576.jpg",
+      "https://static1.gensler.com/uploads/hero_element/24543/thumb_desktop/thumbs/project-buro-happold-02-2000x_1726525635_1024x576.jpg"
+    ],
+    "featured": true,
+    "overview": "A 35,000-square-foot headquarters for Buro Happold in Shoreditch, organized across four floors of the Featherstone Building.",
+    "concept": "The workplace balances open-plan work areas with collaboration and social spaces, using a strong material identity and a prominent mass-timber staircase to connect the floors.",
+    "challenges": "The design supports hybrid working and a range of work styles while prioritizing employee wellbeing, inclusivity, and the integrity of the existing structure.",
+    "materials": "Mass timber, exposed concrete, steel, planting, and a considered palette of workplace materials.",
+    "color": "#8A9BAA"
+  }
+];
+
+const SERVICES_DATA = [
+  {
+    name: 'Residential Interior Design',
+    slug: 'residential',
+    desc: 'Creating personalized residential interiors that balance comfort, beauty, and the unique rhythms of each client\'s life. From apartments to villas, we design homes that evolve gracefully.',
+    features: ['Full interior architecture', 'Furniture design and procurement', 'Material and finish specification', 'Lighting design', 'Artwork and styling curation', 'Project management through completion']
+  },
+  {
+    name: 'Commercial Interior Design',
+    slug: 'commercial',
+    desc: 'Designing professional environments for offices, retail spaces, and businesses that perform as well as they look. We understand that commercial spaces carry both functional and brand expectations.',
+    features: ['Workplace strategy and planning', 'Brand environment design', 'Hospitality and F&B interiors', 'Retail and showroom design', 'Tenant improvement coordination', 'Employee experience consulting']
+  },
+  {
+    name: 'Architectural Design',
+    slug: 'architectural',
+    desc: 'Developing architectural concepts and spatial solutions from the envelope inward — a service we offer to clients who need architecture and interior to be conceived as one coherent idea.',
+    features: ['Concept and schematic design', 'Spatial planning and programming', 'Facade and envelope design', 'Coordination with structural engineers', 'Planning and permit support', 'Technical documentation']
+  },
+  {
+    name: '3D Visualization',
+    slug: '3d-vis',
+    desc: 'Creating photorealistic 3D visualizations and animations that allow clients to inhabit a space before it\'s built — a critical tool for decision-making, client presentation, and construction communication.',
+    features: ['Photorealistic stills', 'Walkthrough animations', 'Material and lighting studies', 'Concept-stage sketches', 'Real-time VR walkthroughs', 'Presentation deck support']
+  },
+  {
+    name: 'Space Planning',
+    slug: 'space-planning',
+    desc: 'Optimizing layouts, circulation, and functionality for spaces of any scale. Sometimes the greatest design intervention is reorganizing what already exists.',
+    features: ['Existing space audit', 'Circulation and flow analysis', 'Furniture and equipment layouts', 'Acoustic and acoustic zoning', 'Accessibility review', 'Phased implementation planning']
+  },
+  {
+    name: 'Design Consultation',
+    slug: 'consultation',
+    desc: 'Professional design advice for clients who need expert guidance on specific decisions — from material selection and color to spatial strategy and contractor briefing.',
+    features: ['Initial design assessment', 'Material and finish direction', 'Color strategy', 'Supplier recommendations', 'Contractor brief preparation', 'Site visit and review']
+  }
+];
+
+// ═══════════════════════════════════════════
+// SVG SCENE GENERATOR
+// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+// FOOTER HTML
+// ═══════════════════════════════════════════
+function footerHTML() {
+  return `<footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Atelier</div>
+        <p class="footer-desc">${escapeHtml(SITE_SETTINGS.footerDescription || 'A premium interior architecture and design studio. Spaces Designed Around Life.')}</p>
+        <div class="footer-social">
+          <a href="#" onclick="return false;" aria-label="Instagram">In</a>
+          <a href="#" onclick="return false;" aria-label="LinkedIn">Li</a>
+          <a href="#" onclick="return false;" aria-label="Pinterest">Pi</a>
+          <a href="#" onclick="return false;" aria-label="Behance">Be</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="navigate('home');return false;">Home</a></li>
+          <li><a href="#" onclick="navigate('projects');return false;">Projects</a></li>
+          <li><a href="#" onclick="navigate('services');return false;">Services</a></li>
+          <li><a href="#" onclick="navigate('about');return false;">About</a></li>
+          <li><a href="#" onclick="navigate('contact');return false;">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="navigate('services');return false;">Residential Design</a></li>
+          <li><a href="#" onclick="navigate('services');return false;">Commercial Design</a></li>
+          <li><a href="#" onclick="navigate('services');return false;">Architectural Design</a></li>
+          <li><a href="#" onclick="navigate('services');return false;">3D Visualization</a></li>
+          <li><a href="#" onclick="navigate('services');return false;">Space Planning</a></li>
+          <li><a href="#" onclick="navigate('services');return false;">Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-contact-line"><a href="mailto:${escapeAttr(SITE_SETTINGS.studioEmail || 'hello@atelier-studio.com')}">${escapeHtml(SITE_SETTINGS.studioEmail || 'hello@atelier-studio.com')}</a></div>
+        <div class="footer-contact-line">${escapeHtml(SITE_SETTINGS.studioPhone || ' +1 (212) 555-0192')}</div>
+        <div class="footer-contact-line"><a href="https://wa.me/${escapeAttr((SITE_SETTINGS.studioPhone || ' +1 (212) 555-0192').replace(/\D/g, ''))}" target="_blank" rel="noopener">WhatsApp</a></div>
+        <button class="btn" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.65);margin-top:24px;font-size:11px;" onclick="navigate('contact')">Start a Project</button>
+      </div>
+    </div>
+    <div style="max-width:var(--max-w);margin:0 auto;">
+      <div class="footer-bottom">
+        <span>© 2026 ATELIER Studio. All rights reserved.</span>
+        <span>Interior Architecture &amp; Design — Worldwide</span>
+      </div>
+    </div>
+    <div class="footer-contact-bar">
+      Contact: <a href="tel:+201098096407">+20 109 809 6407</a> &nbsp;|&nbsp; <a href="mailto:eyadwarda06@gmail.com">eyadwarda06@gmail.com</a>
+    </div>
+  </footer>`;
+}
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+let currentPage = 'home';
+let SITE_SETTINGS = {};
+
+function navigate(page, projectId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (!target) { document.getElementById('page-404').classList.add('active'); return; }
+  target.classList.add('active');
+  window.scrollTo(0, 0);
+  currentPage = page;
+
+  // Update nav active state
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active-link', a.dataset.page === page);
+  });
+
+  if (page === 'detail' && projectId) renderDetail(projectId);
+  if (page === 'projects') renderAllProjects();
+  if (page === 'home') renderHome();
+}
+
+function toggleMenu() {
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobileMenu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════
+// RENDER HOME
+// ═══════════════════════════════════════════
+function renderHome() {
+  const featured = PROJECTS.filter(p => p.featured).slice(0, 3);
+  document.getElementById('featuredGrid').innerHTML = featured.map(p => `
+    <div class="project-card card" onclick="navigate('detail','${p.id}')">
+      <div class="card-img"><img class="site-photo" src="${p.images[0]}" alt="${p.name}" loading="lazy"></div>
+      <div class="card-info">
+        <div class="card-cat">${p.cat}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-meta"><span>${p.location}</span><span>${p.scale}</span></div>
+        <div class="card-link">View Project →</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('homeServicesGrid').innerHTML = SERVICES_DATA.map((s, i) => `
+    <div class="service-item" onclick="navigate('services')">
+      <div class="service-num">0${i+1}</div>
+      <div class="service-name">${s.name}</div>
+      <div class="service-desc">${s.desc.split('.')[0]}.</div>
+    </div>`).join('');
+
+  document.getElementById('home-footer').innerHTML = footerHTML();
+}
+
+// ═══════════════════════════════════════════
+// RENDER PROJECTS
+// ═══════════════════════════════════════════
+let activeFilter = 'All';
+
+function renderAllProjects() {
+  const cats = ['All', ...new Set(PROJECTS.map(p => p.cat))];
+  document.getElementById('filterBar').innerHTML = cats.map(c => `
+    <button class="filter-btn${c === activeFilter ? ' active' : ''}" onclick="setFilter('${c}')">${c}</button>
+  `).join('');
+
+  const filtered = activeFilter === 'All' ? PROJECTS : PROJECTS.filter(p => p.cat === activeFilter);
+  document.getElementById('allProjectsGrid').innerHTML = filtered.map(p => `
+    <div class="project-card" onclick="navigate('detail','${p.id}')">
+      <div class="card-img"><img class="site-photo" src="${p.images[0]}" alt="${p.name}" loading="lazy"></div>
+      <div class="card-info">
+        <div class="card-cat">${p.cat}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-meta"><span>${p.location}</span><span>${p.scale}</span></div>
+        <div class="card-link">View Project →</div>
+      </div>
+    </div>`).join('');
+
+  if (!document.getElementById('projects-footer').innerHTML)
+    document.getElementById('projects-footer').innerHTML = footerHTML();
+}
+
+function setFilter(cat) {
+  activeFilter = cat;
+  renderAllProjects();
+}
+
+// ═══════════════════════════════════════════
+// RENDER DETAIL
+// ═══════════════════════════════════════════
+function renderDetail(id) {
+  const idx = PROJECTS.findIndex(p => p.id === id);
+  if (idx === -1) { navigate('404'); return; }
+  const p = PROJECTS[idx];
+  const prev = PROJECTS[(idx - 1 + PROJECTS.length) % PROJECTS.length];
+  const next = PROJECTS[(idx + 1) % PROJECTS.length];
+
+  document.getElementById('detailContent').innerHTML = `
+    <div class="detail-hero">
+      <img class="site-photo" src="${p.images[0]}" alt="${p.name}" fetchpriority="high">
+      <div class="detail-hero-overlay"></div>
+      <div class="detail-title-block">
+        <div class="cat">${p.cat} · Reference Project</div>
+        <h1>${p.name}</h1>
+      </div>
+    </div>
+    <div class="detail-meta-bar">
+      <div class="wrap">
+        <div class="detail-meta">
+          <div class="detail-meta-item"><label>Location</label><span>${p.location}</span></div>
+          <div class="detail-meta-item"><label>Project Scale</label><span>${p.scale}</span></div>
+          <div class="detail-meta-item"><label>Category</label><span>${p.cat}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="wrap">
+        <div class="detail-cols">
+          <div class="detail-section">
+            <h2>Project Overview</h2>
+            <p>${p.overview}</p>
+          </div>
+          <div class="detail-section">
+            <h2>Design Concept</h2>
+            <p>${p.concept}</p>
+          </div>
+        </div>
+        <div class="detail-cols">
+          <div class="detail-section">
+            <h2>Design Approach</h2>
+            <p>${p.challenges}</p>
+          </div>
+          <div class="detail-section">
+            <h2>Materials &amp; Finishes</h2>
+            <p>${p.materials}</p>
+          </div>
+        </div>
+
+        <div class="project-credit">
+          <strong>Project credit:</strong> ${p.credit}<br>
+          <strong>Photography:</strong> ${p.photographer}<br>
+          <a href="${p.source}" target="_blank" rel="noopener">View original project source ↗</a>
+        </div>
+
+        <div class="section-label" style="margin:32px 0 16px;">Project Gallery</div>
+        <div class="detail-gallery">
+          ${p.images.map((src, i) => `<div class="detail-gallery-img"><img class="site-photo" src="${src}" alt="${p.name} — project photograph ${i+1}" loading="lazy"></div>`).join('')}
+        </div>
+
+        <div class="section-label" style="margin-bottom:24px;">Related Projects</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-bottom:60px;">
+          <div class="project-card" onclick="navigate('detail','${prev.id}')">
+            <div class="card-img" style="aspect-ratio:16/7"><img class="site-photo" src="${prev.images[0]}" alt="${prev.name}" loading="lazy"></div>
+            <div class="card-info">
+              <div class="card-cat">${prev.cat}</div>
+              <div class="card-name">${prev.name}</div>
+              <div class="card-meta"><span>${prev.location}</span><span>${prev.scale}</span></div>
+              <div class="card-link">View Project →</div>
+            </div>
+          </div>
+          <div class="project-card" onclick="navigate('detail','${next.id}')">
+            <div class="card-img" style="aspect-ratio:16/7"><img class="site-photo" src="${next.images[0]}" alt="${next.name}" loading="lazy"></div>
+            <div class="card-info">
+              <div class="card-cat">${next.cat}</div>
+              <div class="card-name">${next.name}</div>
+              <div class="card-meta"><span>${next.location}</span><span>${next.scale}</span></div>
+              <div class="card-link">View Project →</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-nav">
+          <button class="detail-nav-btn" onclick="navigate('detail','${prev.id}')">
+            <div class="detail-nav-label">← Previous</div>
+            <div class="detail-nav-name">${prev.name}</div>
+          </button>
+          <button class="detail-nav-btn next" onclick="navigate('detail','${next.id}')">
+            <div class="detail-nav-label">Next →</div>
+            <div class="detail-nav-name">${next.name}</div>
+          </button>
+        </div>
+
+        <div style="text-align:center;padding:60px 0 0;">
+          <div class="section-label">Start Your Project</div>
+          <h2 class="section-title" style="margin-bottom:20px;">Like What You See?</h2>
+          <button class="btn btn-filled btn-bronze" onclick="navigate('contact')">Discuss Your Project</button>
+        </div>
+      </div>
+    </div>`;
+
+  document.getElementById('detail-footer').innerHTML = footerHTML();
+}
+
+// ═══════════════════════════════════════════
+// RENDER SERVICES
+// ═══════════════════════════════════════════
+function renderServices() {
+  const servicePhotos = ["https://terrazabalear.com/wp-content/uploads/2023/02/Villa_Mara-Terraza_Balear-Interior_Design_Projects-Outdoor_1-1400x817.jpg", "https://static2.gensler.com/uploads/hero_element/24542/thumb_desktop/thumbs/project-buro-happold-01-2000x1125_1726525608_1024x576.jpg", "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_03.jpg", "https://ron-design.jp/ron/wp-content/themes/ron/assets/img/projects/kura/kura_01.jpg", "https://terrazabalear.com/wp-content/uploads/2023/02/Villa_Mara-Terraza_Balear-Interior_Design_Projects-Outdoor_2.jpg", "https://static1.gensler.com/uploads/hero_element/24543/thumb_desktop/thumbs/project-buro-happold-02-2000x_1726525635_1024x576.jpg"];
+  document.getElementById('servicesPage').innerHTML = SERVICES_DATA.map((s, i) => `
+    <div class="service-block">
+      <div class="wrap">
+        <div class="service-block-inner${i % 2 === 1 ? ' rev' : ''}">
+          <div class="service-visual"><img class="site-photo" src="${servicePhotos[i]}" alt="${s.name}" loading="lazy"></div>
+          <div class="service-content">
+            <div class="section-label">0${i+1}</div>
+            <h2>${s.name}</h2>
+            <p>${s.desc}</p>
+            <ul class="service-features">
+              ${s.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+            <button class="btn btn-filled" onclick="navigate('contact')" style="align-self:flex-start;margin-top:8px;">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('services-footer').innerHTML = footerHTML();
+}
+
+// ═══════════════════════════════════════════
+// RENDER ABOUT
+// ═══════════════════════════════════════════
+function renderAbout() {
+  document.getElementById('about-footer').innerHTML = footerHTML();
+}
+
+// ═══════════════════════════════════════════
+// CONTACT FORM
+// ═══════════════════════════════════════════
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  let valid = true;
+  const checks = [
+    { id: 'f-name', group: 'fg-name', test: v => v.trim().length > 0 },
+    { id: 'f-email', group: 'fg-email', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+    { id: 'f-type', group: 'fg-type', test: v => v !== '' },
+    { id: 'f-message', group: 'fg-message', test: v => v.trim().length > 10 }
+  ];
+  checks.forEach(c => {
+    const el = document.getElementById(c.id);
+    const grp = document.getElementById(c.group);
+    if (!c.test(el.value)) { grp.classList.add('error'); valid = false; }
+    else { grp.classList.remove('error'); }
+  });
+  if (!valid) return;
+  const values = {
+    name: document.getElementById('f-name').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    phone: document.getElementById('f-phone').value.trim(),
+    type: document.getElementById('f-type').value,
+    budget: document.getElementById('f-budget').value,
+    location: document.getElementById('f-location').value.trim(),
+    message: document.getElementById('f-message').value.trim()
+  };
+  const button = document.getElementById('submitBtn');
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Sending...';
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(values)
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Could not send your message.');
+    const success = document.getElementById('formSuccess');
+    success.querySelector('h3').textContent = 'Message Received';
+    success.querySelector('p').textContent = 'Thank you. Your enquiry has been saved and the studio will be in touch.';
+    success.classList.add('show');
+    document.getElementById('contactForm').reset();
+  } catch (error) {
+    const success = document.getElementById('formSuccess');
+    success.querySelector('h3').textContent = 'Unable to Send';
+    success.querySelector('p').textContent = error.message;
+    success.classList.add('show');
+  } finally {
+    button.disabled = false;
+    button.textContent = originalText;
+  }
+});
+
+// Clear error on input
+['f-name','f-email','f-type','f-message'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('input', () => {
+    const map = { 'f-name':'fg-name','f-email':'fg-email','f-type':'fg-type','f-message':'fg-message' };
+    document.getElementById(map[id])?.classList.remove('error');
+  });
+});
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>\"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch]));
+}
+function escapeAttr(value) { return escapeHtml(value); }
+function applySiteSettings() {
+  const s = SITE_SETTINGS || {};
+  const setText = (selector, value) => { const el = document.querySelector(selector); if (el && value) el.textContent = value; };
+  setText('.hero-eyebrow', s.heroEyebrow);
+  setText('.hero-sub', s.heroSubtitle);
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle && (s.heroTitleLine1 || s.heroTitleLine2)) heroTitle.innerHTML = `${escapeHtml(s.heroTitleLine1 || 'Designing Spaces.')}<br><em>${escapeHtml(s.heroTitleLine2 || 'Creating Experiences.')}</em>`;
+  setText('.intro-text .section-title', s.introTitle);
+  const introParagraphs = document.querySelectorAll('.intro-text .section-body');
+  if (introParagraphs[0] && s.introParagraphOne) introParagraphs[0].textContent = s.introParagraphOne;
+  if (introParagraphs[1] && s.introParagraphTwo) introParagraphs[1].textContent = s.introParagraphTwo;
+  const email = document.getElementById('studioEmail');
+  if (email && s.studioEmail) email.innerHTML = `<a href="mailto:${escapeAttr(s.studioEmail)}">${escapeHtml(s.studioEmail)}</a>`;
+  setText('#studioPhone', s.studioPhone);
+  const location = document.getElementById('studioLocation');
+  if (location && s.studioLocation) location.innerHTML = escapeHtml(s.studioLocation).replace(/\n/g, '<br>');
+  setText('#officeHours', s.officeHours);
+}
+async function initializeSite() {
+  try {
+    const response = await fetch('/api/public', { cache: 'no-store' });
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data.projects) && data.projects.length) PROJECTS = data.projects;
+      SITE_SETTINGS = data.settings || {};
+      applySiteSettings();
+    }
+  } catch (error) { console.warn('Using built-in site content until the server is available.', error); }
+  renderHome();
+  renderServices();
+  renderAbout();
+  document.getElementById('contact-footer').innerHTML = footerHTML();
+  document.getElementById('four04-footer').innerHTML = footerHTML();
+  if (currentPage === 'projects') renderAllProjects();
+}
+initializeSite();
+
+// Hash routing
+function handleHash() {
+  const h = location.hash.replace('#','');
+  if (h.startsWith('project-')) navigate('detail', h.replace('project-',''));
+  else if (['projects','services','about','contact'].includes(h)) navigate(h);
+  else navigate('home');
+}
+window.addEventListener('hashchange', handleHash);
+if (location.hash) handleHash();
+</script>
+
+</body></html>
