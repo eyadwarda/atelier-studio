@@ -350,6 +350,15 @@ footer {
   margin-right: auto;
 }
 
+.footer-admin-link {
+  color: rgba(255,255,255,.35);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.footer-admin-link:hover { color: var(--bronze-light); }
+
 .footer-contact-bar {
   background: rgba(255,255,255,.04);
   border-top: 1px solid rgba(255,255,255,.08);
@@ -1710,6 +1719,7 @@ function footerHTML() {
       <div class="footer-bottom">
         <span>© 2026 ATELIER Studio. All rights reserved.</span>
         <span>Interior Architecture &amp; Design — Worldwide</span>
+        <a href="/admin" class="footer-admin-link" aria-label="Open studio admin dashboard">Admin Login</a>
       </div>
     </div>
     <div class="footer-contact-bar">
