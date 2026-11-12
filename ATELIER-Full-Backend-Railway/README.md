@@ -52,3 +52,19 @@ Do not upload `.env` or commit real passwords/secrets to GitHub. Railway's `DATA
 - Project photos are currently referenced by external image URLs. Confirm usage rights before using third-party photography in a commercial portfolio.
 - The final personal contact line already present on the public site remains separate from the editable studio contact details.
 - The public contact form stores messages in PostgreSQL; it does not send an email notification. The admin dashboard is where submitted enquiries can be reviewed.
+
+
+## Regression tests
+
+Run `npm ci` and `npm test`. Tests exercise the HTTP API against an in-memory
+PostgreSQL emulator and render the public UI in JSDOM. They do not connect to the
+production database. A real PostgreSQL deployment remains the final integration check.
+
+Projects can be reordered with the up/down controls in the dashboard. Project IDs
+are immutable after creation. Project image and source URLs must use HTTP(S).
+Client enquiries are paginated in groups of 50 and show the total unread count.
+Project links use `#project-<id>` and support browser back/forward navigation.
+
+Initial reference projects are seeded once, tracked by the `app_migrations` table.
+On an existing installation the first upgraded startup records the migration and
+preserves existing projects. Once recorded, deleting all projects keeps the site empty.

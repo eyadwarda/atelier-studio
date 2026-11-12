@@ -4,8 +4,13 @@
   "private": true,
   "description": "ATELIER interior architecture studio website with admin dashboard and PostgreSQL backend",
   "main": "server.js",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -15,5 +20,9 @@
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.0",
+    "pg-mem": "^3.0.14"
   }
 }
