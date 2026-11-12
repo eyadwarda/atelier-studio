@@ -1,5 +1,8 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ATELIER — Interior Architecture Studio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="ATELIER is a premium interior architecture and design studio crafting timeless residential, commercial, and hospitality spaces.">
@@ -1189,6 +1192,8 @@ footer {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 </style>
+</head>
+<body>
 
 <!-- NAV -->
 <nav>
@@ -1684,7 +1689,7 @@ function footerHTML() {
   return `<footer>
     <div class="footer-inner">
       <div>
-        <div class="footer-logo">Atelier</div>
+        <div class="footer-logo">${escapeHtml(SITE_SETTINGS.studioName ?? 'Atelier')}</div>
         <p class="footer-desc">${escapeHtml(SITE_SETTINGS.footerDescription || 'A premium interior architecture and design studio. Spaces Designed Around Life.')}</p>
         <div class="footer-social">
           <a href="#" onclick="return false;" aria-label="Instagram">In</a>
@@ -1738,10 +1743,16 @@ function footerHTML() {
 // ═══════════════════════════════════════════
 // NAVIGATION
 // ═══════════════════════════════════════════
+let siteReady = false;
 let currentPage = 'home';
 let SITE_SETTINGS = {};
 
-function navigate(page, projectId) {
+function navigate(page, projectId, updateHash = true) {
+  if (updateHash && !siteReady) return;
+  if (updateHash) {
+    const hash = page === 'detail' ? '#project-' + encodeURIComponent(projectId) : page === 'home' ? '' : '#' + page;
+    if (location.hash !== hash) history.pushState(null, '', location.pathname + location.search + hash);
+  }
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-' + page);
   if (!target) { document.getElementById('page-404').classList.add('active'); return; }
@@ -1770,9 +1781,9 @@ function toggleMenu() {
 // RENDER HOME
 // ═══════════════════════════════════════════
 function renderHome() {
-  const featured = PROJECTS.filter(p => p.featured).slice(0, 3);
+  const featured = PROJECTS.filter(p => p.featured).slice(0, 3).map(projectView);
   document.getElementById('featuredGrid').innerHTML = featured.map(p => `
-    <div class="project-card card" role="link" tabindex="0" aria-label="View project: ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();navigate('detail','${p.id}')}" onclick="navigate('detail','${p.id}')">
+    <div class="project-card card" role="link" tabindex="0" aria-label="View project: ${p.name}" data-project="${p.id}">
       <div class="card-img"><img class="site-photo" src="${p.images[0]}" alt="${p.name}" loading="lazy"></div>
       <div class="card-info">
         <div class="card-cat">${p.cat}</div>
@@ -1800,12 +1811,12 @@ let activeFilter = 'All';
 function renderAllProjects() {
   const cats = ['All', ...new Set(PROJECTS.map(p => p.cat))];
   document.getElementById('filterBar').innerHTML = cats.map(c => `
-    <button class="filter-btn${c === activeFilter ? ' active' : ''}" onclick="setFilter('${c}')">${c}</button>
+    <button class="filter-btn${c === activeFilter ? ' active' : ''}" data-filter="${escapeAttr(c)}">${escapeHtml(c)}</button>
   `).join('');
 
   const filtered = activeFilter === 'All' ? PROJECTS : PROJECTS.filter(p => p.cat === activeFilter);
-  document.getElementById('allProjectsGrid').innerHTML = filtered.map(p => `
-    <div class="project-card" role="link" tabindex="0" aria-label="View project: ${p.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();navigate('detail','${p.id}')}" onclick="navigate('detail','${p.id}')">
+  document.getElementById('allProjectsGrid').innerHTML = filtered.map(projectView).map(p => `
+    <div class="project-card" role="link" tabindex="0" aria-label="View project: ${p.name}" data-project="${p.id}">
       <div class="card-img"><img class="site-photo" src="${p.images[0]}" alt="${p.name}" loading="lazy"></div>
       <div class="card-info">
         <div class="card-cat">${p.cat}</div>
@@ -1830,9 +1841,9 @@ function setFilter(cat) {
 function renderDetail(id) {
   const idx = PROJECTS.findIndex(p => p.id === id);
   if (idx === -1) { navigate('404'); return; }
-  const p = PROJECTS[idx];
-  const prev = PROJECTS[(idx - 1 + PROJECTS.length) % PROJECTS.length];
-  const next = PROJECTS[(idx + 1) % PROJECTS.length];
+  const p = projectView(PROJECTS[idx]);
+  const prev = projectView(PROJECTS[(idx - 1 + PROJECTS.length) % PROJECTS.length]);
+  const next = projectView(PROJECTS[(idx + 1) % PROJECTS.length]);
 
   document.getElementById('detailContent').innerHTML = `
     <div class="detail-hero">
@@ -1888,7 +1899,7 @@ function renderDetail(id) {
 
         <div class="section-label" style="margin-bottom:24px;">Related Projects</div>
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-bottom:60px;">
-          <div class="project-card" onclick="navigate('detail','${prev.id}')">
+          <div class="project-card" data-project="${prev.id}">
             <div class="card-img" style="aspect-ratio:16/7"><img class="site-photo" src="${prev.images[0]}" alt="${prev.name}" loading="lazy"></div>
             <div class="card-info">
               <div class="card-cat">${prev.cat}</div>
@@ -1897,7 +1908,7 @@ function renderDetail(id) {
               <div class="card-link">View Project →</div>
             </div>
           </div>
-          <div class="project-card" onclick="navigate('detail','${next.id}')">
+          <div class="project-card" data-project="${next.id}">
             <div class="card-img" style="aspect-ratio:16/7"><img class="site-photo" src="${next.images[0]}" alt="${next.name}" loading="lazy"></div>
             <div class="card-info">
               <div class="card-cat">${next.cat}</div>
@@ -1909,11 +1920,11 @@ function renderDetail(id) {
         </div>
 
         <div class="detail-nav">
-          <button class="detail-nav-btn" onclick="navigate('detail','${prev.id}')">
+          <button class="detail-nav-btn" data-project="${prev.id}">
             <div class="detail-nav-label">← Previous</div>
             <div class="detail-nav-name">${prev.name}</div>
           </button>
-          <button class="detail-nav-btn next" onclick="navigate('detail','${next.id}')">
+          <button class="detail-nav-btn next" data-project="${next.id}">
             <div class="detail-nav-label">Next →</div>
             <div class="detail-nav-name">${next.name}</div>
           </button>
@@ -1973,7 +1984,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     { id: 'f-name', group: 'fg-name', test: v => v.trim().length > 0 },
     { id: 'f-email', group: 'fg-email', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
     { id: 'f-type', group: 'fg-type', test: v => v !== '' },
-    { id: 'f-message', group: 'fg-message', test: v => v.trim().length > 10 }
+    { id: 'f-message', group: 'fg-message', test: v => v.trim().length >= 10 }
   ];
   checks.forEach(c => {
     const el = document.getElementById(c.id);
@@ -2034,17 +2045,37 @@ function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>\"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch]));
 }
 function escapeAttr(value) { return escapeHtml(value); }
+function safeUrl(value) { try { const u = new URL(String(value)); return ['http:', 'https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } }
+function projectView(project) {
+  const view = {};
+  for (const [key, value] of Object.entries(project)) view[key] = typeof value === 'string' ? escapeHtml(value) : value;
+  view.images = (project.images || []).map(url => escapeAttr(safeUrl(url)));
+  view.source = escapeAttr(safeUrl(project.source));
+  return view;
+}
+document.addEventListener('click', event => {
+  const project = event.target.closest('[data-project]');
+  const filter = event.target.closest('[data-filter]');
+  if (project) navigate('detail', project.dataset.project);
+  if (filter) setFilter(filter.dataset.filter);
+});
+document.addEventListener('keydown', event => {
+  const project = event.target.closest('[data-project][role="link"]');
+  if (project && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); navigate('detail', project.dataset.project); }
+});
+
 function applySiteSettings() {
   const s = SITE_SETTINGS || {};
-  const setText = (selector, value) => { const el = document.querySelector(selector); if (el && value) el.textContent = value; };
+  const setText = (selector, value) => { const el = document.querySelector(selector); if (el && value !== undefined && value !== null) el.textContent = value; };
+  setText('.nav-logo', s.studioName);
   setText('.hero-eyebrow', s.heroEyebrow);
   setText('.hero-sub', s.heroSubtitle);
   const heroTitle = document.querySelector('.hero-title');
-  if (heroTitle && (s.heroTitleLine1 || s.heroTitleLine2)) heroTitle.innerHTML = `${escapeHtml(s.heroTitleLine1 || 'Designing Spaces.')}<br><em>${escapeHtml(s.heroTitleLine2 || 'Creating Experiences.')}</em>`;
+  if (heroTitle && ('heroTitleLine1' in s || 'heroTitleLine2' in s)) heroTitle.innerHTML = `${escapeHtml(s.heroTitleLine1 ?? 'Designing Spaces.')}<br><em>${escapeHtml(s.heroTitleLine2 ?? 'Creating Experiences.')}</em>`;
   setText('.intro-text .section-title', s.introTitle);
   const introParagraphs = document.querySelectorAll('.intro-text .section-body');
-  if (introParagraphs[0] && s.introParagraphOne) introParagraphs[0].textContent = s.introParagraphOne;
-  if (introParagraphs[1] && s.introParagraphTwo) introParagraphs[1].textContent = s.introParagraphTwo;
+  if (introParagraphs[0] && s.introParagraphOne !== undefined) introParagraphs[0].textContent = s.introParagraphOne;
+  if (introParagraphs[1] && s.introParagraphTwo !== undefined) introParagraphs[1].textContent = s.introParagraphTwo;
   const email = document.getElementById('studioEmail');
   if (email && s.studioEmail) email.innerHTML = `<a href="mailto:${escapeAttr(s.studioEmail)}">${escapeHtml(s.studioEmail)}</a>`;
   setText('#studioPhone', s.studioPhone);
@@ -2057,7 +2088,7 @@ async function initializeSite() {
     const response = await fetch('/api/public', { cache: 'no-store' });
     if (response.ok) {
       const data = await response.json();
-      if (Array.isArray(data.projects) && data.projects.length) PROJECTS = data.projects;
+      if (Array.isArray(data.projects)) PROJECTS = data.projects;
       SITE_SETTINGS = data.settings || {};
       applySiteSettings();
     }
@@ -2067,19 +2098,22 @@ async function initializeSite() {
   renderAbout();
   document.getElementById('contact-footer').innerHTML = footerHTML();
   document.getElementById('four04-footer').innerHTML = footerHTML();
-  if (currentPage === 'projects') renderAllProjects();
+  siteReady = true;
+  handleHash();
 }
 initializeSite();
 
 // Hash routing
 function handleHash() {
-  const h = location.hash.replace('#','');
-  if (h.startsWith('project-')) navigate('detail', h.replace('project-',''));
-  else if (['projects','services','about','contact'].includes(h)) navigate(h);
-  else navigate('home');
+  if (!siteReady) return;
+  let h;
+  try { h = decodeURIComponent(location.hash.slice(1)); } catch { navigate('404', undefined, false); return; }
+  if (h.startsWith('project-')) navigate('detail', h.slice(8), false);
+  else if (['projects','services','about','contact'].includes(h)) navigate(h, undefined, false);
+  else navigate('home', undefined, false);
 }
 window.addEventListener('hashchange', handleHash);
-if (location.hash) handleHash();
+window.addEventListener('popstate', handleHash);
 </script>
 
 </body></html>
